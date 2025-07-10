@@ -12,9 +12,13 @@ android {
     defaultConfig {
         minSdk = 24
 
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
     }
+
+
 
     buildTypes {
         release {
@@ -32,6 +36,8 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+
 }
 
 dependencies {
@@ -55,5 +61,7 @@ dependencies {
 
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
+    implementation("androidx.paging:paging-runtime:3.2.1")
+    implementation("androidx.paging:paging-compose:3.2.1")
 
 }

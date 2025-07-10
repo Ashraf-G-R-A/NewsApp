@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,7 +8,14 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
 }
 
+val localProperties = Properties()
+localProperties.load(rootProject.file("local.properties").inputStream())
+val newsApiKey = localProperties["NEWS_API_KEY"] as String
+
 android {
+    buildFeatures {
+        buildConfig = true
+    }
     namespace = "com.example.newsapp"
     compileSdk = 35
 
@@ -18,6 +27,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "NEWS_API_KEY",
+            "\"$newsApiKey\""
+        )
+
     }
 
     buildTypes {
@@ -33,12 +49,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        compose = true
-    }
+
 }
 
 dependencies {
