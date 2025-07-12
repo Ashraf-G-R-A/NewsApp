@@ -14,8 +14,10 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = White,
     onSurface = White,
     secondary = Placeholder,
+    tertiary = Shimmer,
+    error = White,
 
-)
+    )
 
 private val LightColorScheme = lightColorScheme(
     primary = Purple500,
@@ -25,8 +27,10 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Black,
     onSurface = Black,
     secondary = Teal700,
+    tertiary = Teal200,
+    error = Black,
 
-)
+    )
 
 @Composable
 fun NewsAppTheme(

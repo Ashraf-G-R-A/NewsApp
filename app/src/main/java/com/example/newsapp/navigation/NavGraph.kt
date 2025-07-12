@@ -1,10 +1,13 @@
 package com.example.newsapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.newsapp.home.HomeScreen
+import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.newsapp.home.HomeViewModel
+import com.example.newsapp.home.view.HomeScreen
 import com.example.newsapp.onboarding.view.OnboardingScreen
 import com.example.newsapp.splash.SplashScreen
 
@@ -23,7 +26,11 @@ fun AppNavGraph(navController: NavHostController) {
         }
 
         composable(route = Routes.Home.route) {
+
             HomeScreen(navController = navController)
+        }
+        composable(route = Routes.Search.route) {
+//            SearchScreen(navController = navController)
         }
     }
 }

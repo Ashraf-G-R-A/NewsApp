@@ -15,4 +15,10 @@ object AppModule {
     @Provides
     @Named("newsApiKey")
     fun provideNewsApiKey(): String = BuildConfig.NEWS_API_KEY
+
+    @Provides
+    @Named("baseUrl")
+    fun provideBaseUrl(): String = BuildConfig.BASE_URL
+
+
 }

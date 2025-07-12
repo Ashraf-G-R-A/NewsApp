@@ -15,19 +15,20 @@ class NewsRepositoryImpl @Inject constructor(
     @Named("newsApiKey") private val apiKey: String
 ) : NewsRepository {
 
-    override fun getNewsByQueryPaging(
-        query: String,
-        from: String,
-        to: String,
-        pageSize: Int
+    override  fun getNewsByQueryPaging(
+        sources: List<String>,
     ): Flow<PagingData<NewsEntity>> {
         return Pager(
             config = PagingConfig(
-                pageSize = pageSize,
+                pageSize = 10,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                NewsPagingSource(api, apiKey, query, from, to)
+                NewsPagingSource(
+                    api = api,
+                    sources = sources.joinToString(separator = ","),
+                    apiKey = apiKey
+                )
             }
         ).flow
     }

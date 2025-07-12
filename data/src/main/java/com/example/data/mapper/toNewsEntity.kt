@@ -7,5 +7,8 @@ fun ArticleDto.toNewsEntity() = NewsEntity(
     title = title,
     description = description,
     url = url,
-    urlToImage = urlToImage
+    urlToImage = urlToImage,
+    publishedAt = publishedAt.substringBefore("T"),
+    author = author,
+    sourceName = source.name
 )

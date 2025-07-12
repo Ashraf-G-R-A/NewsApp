@@ -11,6 +11,7 @@ plugins {
 val localProperties = Properties()
 localProperties.load(rootProject.file("local.properties").inputStream())
 val newsApiKey = localProperties["NEWS_API_KEY"] as String
+val baseUrl = localProperties["BASE_URL"] as String
 
 android {
     buildFeatures {
@@ -32,6 +33,11 @@ android {
             "String",
             "NEWS_API_KEY",
             "\"$newsApiKey\""
+        )
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            "\"$baseUrl\""
         )
 
     }
@@ -91,6 +97,12 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+
+    implementation("androidx.paging:paging-runtime:3.2.1")
+    implementation("androidx.paging:paging-compose:3.2.1")
+
 
 
 }

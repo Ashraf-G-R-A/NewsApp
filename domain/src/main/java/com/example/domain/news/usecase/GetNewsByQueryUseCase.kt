@@ -1,8 +1,9 @@
 package com.example.domain.news.usecase
 
 import com.example.domain.news.repo.NewsRepository
+import javax.inject.Inject
 
-class GetNewsByQueryUseCase(private val repository: NewsRepository) {
-    suspend operator fun invoke(query: String, from: String, to: String) =
-        repository.getNewsByQueryPaging(query, from, to)
+class GetNewsByQueryUseCase @Inject constructor(private val repository: NewsRepository) {
+    fun getNews(sources: List<String>) =
+        repository.getNewsByQueryPaging(sources)
 }
